@@ -21,7 +21,7 @@ pub(crate) struct TempCollector<T: serde::Serialize + for<'a> serde::Deserialize
     pub(crate) inner: swapvec::SwapVec<T>,
 }
 
-impl<T: serde::Serialize + for<'a> serde::Deserialize<'a>> TempCollector<T> {
+impl<T: serde::Serialize + for<'a> serde::Deserialize<'a> + Clone> TempCollector<T> {
     pub(crate) fn push(&mut self, val: T) {
         self.inner.push(val).unwrap();
     }
